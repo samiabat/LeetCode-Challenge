@@ -11,13 +11,9 @@ class Solution:
                     if grid[i][j]=="1" and not visit[i][j]:
                         visit[i][j] = True
                         dp(i,j)
-                        
         for i in range(len(grid)):
             for j in range(len(grid[0])):
                 if not visit[i][j] and grid[i][j]=="1":
                     count+=1
                     dp(i, j)
         return count
-            
-            
-            
