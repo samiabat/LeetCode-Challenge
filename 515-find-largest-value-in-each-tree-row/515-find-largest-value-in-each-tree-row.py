@@ -9,10 +9,8 @@ class Solution:
         if not root:
             return root
         q = deque()
-        
         q.append(root)
         ans = []
-        
         while q:
             size = len(q)
             maxi = float("-inf")
