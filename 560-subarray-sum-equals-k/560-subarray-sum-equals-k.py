@@ -1,15 +1,14 @@
 class Solution:
     def subarraySum(self, nums: List[int], k: int) -> int:
-        c=0
-        sums=0
+        counter = 0
+        tot = 0
         see=Counter()
-        see[0]=1
-        for n in nums:
-            sums+=n
-            diff=sums-k
-            c+=see[diff]
-            see[sums]+=1
-        print(see)
-        return c
+        see[0] = 1
+        for i in nums:
+            tot+=i
+            diff=tot-k
+            counter+=see[diff]
+            see[tot]+=1
+        return counter
                 
             
