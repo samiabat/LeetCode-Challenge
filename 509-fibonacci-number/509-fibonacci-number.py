@@ -1,8 +1,5 @@
 class Solution:
     def fib(self, n: int) -> int:
-        def helper(n):
-            if n<=1:
-                return (n, 0)
-            (a,b) = helper(n-1)
-            return (a+b, a)
-        return helper(n)[0]
+        if n==1 or n==0:
+            return n
+        return self.fib(n-1)+self.fib(n-2)
