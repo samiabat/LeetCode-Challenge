@@ -1,6 +1,5 @@
 class Solution:
 	def PredictTheWinner(self, nums: List[int]) -> bool:
-		@lru_cache(None)
 		def solve(i, j, chance):
 
 			if i > j:
