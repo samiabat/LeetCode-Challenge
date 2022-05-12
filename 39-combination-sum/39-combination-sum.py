@@ -3,6 +3,7 @@ class Solution:
         ans = []
         def dp(t, res=[]):
             if t==0:
+                res.sort()
                 ans.append(res)
                 return
             if t<0:
@@ -10,5 +11,5 @@ class Solution:
             for i in candidates:
                 dp(t - i, res + [i])
         dp(target)
-        ans = [tuple(sorted(i)) for i in ans]
+        ans = [tuple(i) for i in ans]
         return set(ans)
