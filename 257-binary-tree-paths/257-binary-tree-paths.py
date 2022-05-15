@@ -9,7 +9,7 @@ class Solution:
         ans = []
         def bt(r, temp = []):
             if temp and not r:
-                ans.append(temp)
+                ans.append(temp[1:])
                 return
             if not r:
                 return
@@ -20,7 +20,4 @@ class Solution:
             if r.right:
                 bt(r.right, temp+ ["->", str(r.val)])
         bt(root)
-        fin = []
-        for i in ans:
-            fin.append("".join(i[1:]))
-        return fin
+        return ["".join(i) for i in ans]
