@@ -1,5 +1,5 @@
 class Solution:
-    def check(self, arr, m, n):
+    def isIsland(self, arr, m, n):
         for a, b in arr:
             if 0<a<m and 0<b<n:
                 continue
@@ -21,6 +21,6 @@ class Solution:
                 if not visited[i][j]:
                     arr = []
                     dfs(i, j)
-                    if arr and self.check(arr, len(grid)-1, len(grid[0])-1):
+                    if arr and self.isIsland(arr, len(grid)-1, len(grid[0])-1):
                         count+=1
         return count
