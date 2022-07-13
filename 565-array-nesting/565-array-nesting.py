@@ -1,10 +1,9 @@
 class Solution:
     def arrayNesting(self, nums: List[int]) -> int:
-        def dp(index, cur = set(), memo = {}):
+        memo = {}
+        def dp(index, cur = set()):
             if index in memo:
                 return memo[index]
-            if index>=len(nums):
-                return 0
             current = nums[index]
             if current in cur:
                 return 0
