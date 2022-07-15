@@ -1,13 +1,17 @@
 class Solution:
     def canJump(self, nums: List[int]) -> bool:
-        @lru_cache(maxsize=None)
-        def dp(index):
-            if index<len(nums)-1 and nums[index]==0:
-                return False
+        memo = {}
+        def dp(index, memo = {}):
+            if index in memo:
+                return memo[index]
             if index>=len(nums)-1:
                 return True
+            if nums[index]==0:
+                return False
             for i in range(nums[index], 0, -1):
                 if dp(index+i):
-                    return True
-            return False
+                    memo[index] = True
+                    return memo[index]
+            memo[index] = False
+            return memo[index]
         return dp(0)
