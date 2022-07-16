@@ -8,7 +8,7 @@ class Solution:
                 return 0
             if index<len(nums)-1 and nums[index]==0:
                 return len(nums)-1
-            for i in range(1, nums[index]+1):
+            for i in range(nums[index], 0, -1):
                 ans = min(ans, 1+dp(index+i))
             return ans
         return dp(0)
