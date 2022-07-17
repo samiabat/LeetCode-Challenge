@@ -8,14 +8,18 @@ class Solution:
     def minDepth(self, root: Optional[TreeNode]) -> int:
         if not root:
             return 0
-        @lru_cache(maxsize=None)
-        def dp(root):
-            if not root.left and not root.right:
-                return 1
-            if not root.left:
-                return  1+dp(root.right)
-            if not root.right:
-                return  1+dp(root.left)
-            return min(1+dp(root.right), 1+dp(root.left))
-        return dp(root)
+        q = deque([root])
+        ans = 0
+        while q:
+            size = len(q)
+            ans+=1
+            for i in range(size):
+                top = q.popleft()
+                if top.left:
+                    q.append(top.left)
+                if top.right:
+                    q.append(top.right)
+                if not top.right and not top.left:
+                    return ans
+        return ans
         
