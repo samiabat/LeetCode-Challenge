@@ -1,19 +1,19 @@
 class Solution:
     def coinChange(self, coins: List[int], amount: int) -> int:
-        def dp(amount, count, memo={}):
-            if amount in memo:
-                return memo[amount]
-            if amount == 0:
+        @lru_cache(maxsize=None)
+        def dp(index, amount):
+            if amount==0:
                 return 0
             if amount<0:
                 return inf
-            arr =  []
-            for i in coins:
-                arr.append(1+dp(amount-i, count+1, memo))
-            memo[amount] = min(arr)
-            return memo[amount]
+            if index>=len(coins):
+                return inf
+            chose = 1+dp(index+1, amount-coins[index])
+            n_chose = dp(index+1, amount)
+            rpt = 1+dp(index, amount-coins[index])
+            return min(chose, n_chose, rpt)
         
-        ans = dp(amount, 0)
-        if ans ==inf:
+        ans = dp(0, amount)
+        if ans == inf:
             return -1
         return ans
