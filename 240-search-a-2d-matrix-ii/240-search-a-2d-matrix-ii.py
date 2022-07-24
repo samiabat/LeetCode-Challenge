@@ -12,7 +12,6 @@ class Solution:
             if target>cur:
                 return (dp(midr+1, c, row, col) or 
                         dp(r, midc+1, row, col))
-            else:
-                return (dp(r, c, midr-1, col) or 
-                        dp(r, c, row, midc-1))
+            return (dp(r, c, midr-1, col) or 
+                    dp(r, c, row, midc-1))
         return dp(0, 0, len(matrix)-1, len(matrix[0])-1)
