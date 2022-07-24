@@ -1,6 +1,6 @@
 class Solution:
     def canCross(self, stones: List[int]) -> bool:
-        dic = {stones[i]:i for i in range(len(stones))}
+        dic = set(stones)
         @lru_cache(maxsize=None)
         def dp(val, k):
             if k<=0:
