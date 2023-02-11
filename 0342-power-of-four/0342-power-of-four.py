@@ -1,9 +1,10 @@
 class Solution:
     def isPowerOfFour(self, n: int) -> bool:
-        for i in range(31):
-            if pow(4, i) == n:
-                return True
-        return False
+        def recursion(i):
+            if i >= 31:return False
+            if  pow(4, i) == n: return True
+            return recursion(i+1)
+        return recursion(0)
         
         
         
