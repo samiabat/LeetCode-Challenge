@@ -1,9 +1,14 @@
 class Solution:
     def isPowerOfThree(self, n: int) -> bool:
-        for i in range(-31, 32, 1):
-            if pow(3, i) == n:
+        def pow_three(exponent):
+            if pow(3, exponent) == n:
                 return True
-        return False
+            if exponent > 31:
+                return False
+            return pow_three(exponent+1)
+        return pow_three(-32)
+            
+            
         
         
         
