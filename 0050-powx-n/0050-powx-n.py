@@ -1,13 +1,14 @@
 class Solution:
-    def pow(self, number, exponent):
-        if exponent == 0: return 1
-        if exponent == 1: return number
-        half = self.pow(number, exponent // 2)
-        if exponent % 2: return number * half * half
-        return half * half
-    
-    
-    def myPow(self, number, exponent):
-        if exponent <= 0:
-            return 1/(self.pow(number, -exponent))
-        return self.pow(number, exponent)
+    def pow(self, x, n):
+        if n == 1: return x
+        half = pow(x, n//2) 
+        if n % 2 == 1:
+            return x * half * half
+        return half*half
+    def myPow(self, x: float, n: int) -> float:
+        if n>0: return self.pow(x, n)
+        elif n<0: return self.pow(1/x, -n)
+        else: return 1
+        
+        
+        
