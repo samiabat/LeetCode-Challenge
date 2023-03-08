@@ -1,20 +1,19 @@
 class Solution:
     def minOperations(self, arr: List[int], x: int) -> int:
-        position = {0:-1}
-        cur_prefix = 0
+        left = 0
+        right = 0
+        cur_sum = 0
+        ans = float('inf')
         tot = sum(arr)
         to_be_removed = tot - x
-        best_ans = float('inf')
-        for i in range(len(arr)):
-            cur_prefix += arr[i]
-            removed = cur_prefix -  to_be_removed
-            position[cur_prefix] = i
-            if removed in position:
-                cur_ans = position[removed] + 1 + (len(arr) - i - 1)
-                best_ans = min(best_ans, cur_ans)
-        if best_ans == inf:
+        while right<len(arr):
+            cur_sum += arr[right]
+            while left<=right and cur_sum > to_be_removed:
+                cur_sum -= arr[left]
+                left += 1
+            if cur_sum == to_be_removed:
+                ans = min(ans, left  + (len(arr) - right - 1))
+            right += 1
+        if ans == inf:
             return -1
-        return best_ans
-            
-            
-        
+        return ans
