@@ -1,10 +1,6 @@
 class Solution:
     def removeDuplicateLetters(self, s: str) -> str:
         d= collections.Counter(list(s))
-        # d={}
-        #bcab
-        #aaab
-        
         stack=[]
         st=set()
         for i in range(len(s)):
