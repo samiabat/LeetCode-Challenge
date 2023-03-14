@@ -1,10 +1,10 @@
 class Solution:
     def PredictTheWinner(self, nums: List[int]) -> bool:
-        def helper(l, r, turn):
-            if l == r:
-                return turn * nums[l]
-            a = turn * nums[l] + helper(l + 1, r, -turn)
-            b = turn * nums[r] + helper(l, r-1,  -turn)
-            return turn * max(turn * a, turn * b)
-        return helper(0, len(nums)-1, 1)>=0
+        @cache
+        def winner(l, r):
+            if l == r: return nums[l]
+            a = nums[l] - winner(l + 1, r)
+            b = nums[r] - winner(l, r-1)
+            return max(a, b)
+        return winner(0, len(nums)-1)>=0
 		
